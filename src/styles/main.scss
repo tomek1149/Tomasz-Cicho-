@@ -10,3 +10,7 @@ $colors: (description: #D4D4D4,
 @function color($basicColors) {
     @return map-get($map: $colors, $key:$basicColors)
 }
+
+body {
+    background-image: url(../images/bgc_snow_color.jpg);
+}
