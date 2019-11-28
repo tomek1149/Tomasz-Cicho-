@@ -1,29 +1,39 @@
+@font-face {
+    font-family: 'Helvetica_New_Design';
+    src: url('../fonts/HelveticaNowDisplay-Bold.ttf');
+}
+
+
+$colors: (description: #D4D4D4,
+    icons: #000,
+);
+
+
+@function color($basicColors) {
+    @return map-get($map: $colors, $key:$basicColors)
+}
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-$colors: (description: #D4D4D4,
-    icons: #000,
-);
-
-@function color($basicColors) {
-    @return map-get($map: $colors, $key:$basicColors)
+h1,
+h2 {
+    color: color(description);
 }
 
 body {
     height: 100%;
+    font-family: 'Helvetica_New_Design', sans-serif;
 }
 
-.bgc {
+.home_wrap {
     position: relative;
     overflow: hidden;
-
-    img {
-        height: calc(100vh);
-        background-image: url(../images/bgc_snow_color.jpg) no-repeat cover center/cover;
-    }
+    height: 100vh;
+    background: url(../images/bgc_snow_color.jpg) no-repeat center center/cover;
 }
 
 nav,
@@ -31,4 +41,15 @@ header,
 footer {
     position: absolute;
     z-index: 1;
+}
+
+.container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 90%;
+    height: 40%;
+
+
 }
