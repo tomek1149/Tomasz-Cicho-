@@ -1,6 +1,7 @@
 * {
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
 }
 
 $colors: (description: #D4D4D4,
@@ -12,5 +13,22 @@ $colors: (description: #D4D4D4,
 }
 
 body {
-    background-image: url(../images/bgc_snow_color.jpg);
+    height: 100%;
+}
+
+.bgc {
+    position: relative;
+    overflow: hidden;
+
+    img {
+        height: calc(100vh);
+        background-image: url(../images/bgc_snow_color.jpg) no-repeat cover center/cover;
+    }
+}
+
+nav,
+header,
+footer {
+    position: absolute;
+    z-index: 1;
 }
