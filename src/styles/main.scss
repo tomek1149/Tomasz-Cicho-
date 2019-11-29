@@ -1,14 +1,18 @@
 @font-face {
-    font-family: 'Helvetica_New_Design';
+    font-family: 'Helvetica_New_Design_Bold';
     src: url('../fonts/HelveticaNowDisplay-Bold.ttf');
+    font-weight: 600;
 }
 
-@import "../fonts/stylesheet.css"
-
+@font-face {
+    font-family: 'Helvetica_New_Design_Regular';
+    src: url('../fonts/HelveticaNowDisplay-Regular.ttf');
+    font-weight: 600;
+}
 
 $colors: (description: #D4D4D4,
     icons: #000,
-);
+    menu-background: #fff);
 
 
 @function color($basicColors) {
@@ -28,20 +32,57 @@ h2 {
 
 body {
     height: 100%;
-    font-family: 'Helvetica_New_Design', sans-serif;
+    font-family: 'Helvetica_New_Design_Bold', sans-serif;
+    overflow: hidden;
+
 }
 
 .home_wrap {
-    position: relative;
     overflow: hidden;
-    height: 100vh;
-    background: url(../images/bgc_snow_color.jpg) no-repeat center center/cover;
+    height: 100%;
+
+    img {
+        position: relative;
+        top: 0;
+        left: -110%;
+        overflow: hidden;
+        transform: scale(1.1);
+        height: 100vh;
+        background-color: black;
+        filter: blur(20px);
+        z-index: -1;
+    }
+
 }
+
+.social-square {
+    background-color: color(menu-background);
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 37px;
+    width: 155px;
+}
+
+.navigation-square {
+    background-color: color(menu-background);
+    position: fixed;
+    top: 0;
+    right: 0;
+    height: 37px;
+    width: 155px;
+}
+
+.navigation {
+    display: none;
+}
+
 
 nav,
 header,
 footer {
     position: absolute;
+    // top: 0;
     z-index: 1;
 }
 
@@ -53,5 +94,47 @@ footer {
     width: 90%;
     height: 40%;
 
+    .name {
+        h1 {
+            font-size: 41px;
+            line-height: 57px;
+            text-indent: 23px;
+            letter-spacing: 24.35px;
+            text-align: center;
+            text-transform: uppercase;
+        }
+    }
 
+    .surname {
+        h1 {
+            font-size: 41px;
+            line-height: 57px;
+            text-indent: 26px;
+            letter-spacing: 24.35px;
+            text-align: center;
+            text-transform: uppercase;
+        }
+    }
+
+
+    h2 {
+
+        padding-top: 60px;
+        font-size: 20px;
+        line-height: 27px;
+        letter-spacing: 10.1px;
+        text-align: center;
+        text-transform: uppercase;
+        font-family: 'Helvetica_New_Design_Regular', sans-serif;
+    }
+
+}
+
+
+
+footer {
+    bottom: 10px;
+    left: 50%;
+    transform: translate(-50%, -10%);
+    color: color(description);
 }
