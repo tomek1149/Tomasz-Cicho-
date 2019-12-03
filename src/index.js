@@ -6,6 +6,7 @@ const navSlide = () => {
     const nav = document.querySelector(".navigation");
     const navlinks = document.querySelectorAll('.mobile li')
     //toggle nav
+
     burger.addEventListener('click', () => {
         nav.classList.toggle('navigation-active');
 
@@ -25,9 +26,6 @@ const navSlide = () => {
         burger.classList.toggle('toggle')
 
     });
-
-
-
 }
 
 navSlide();
@@ -49,6 +47,8 @@ const socialNav = () => {
                 link.style.animation = `navFadeSocial .5s ease forwards ${index / 7 + 0.4}s`;
             }
         })
+
+        // socialString.classList.toggle('toggle');
 
     });
 }

@@ -1,3 +1,23 @@
+@mixin iPhone5 {
+    @media only screen and (min-width: 320px) {
+        @content;
+    }
+}
+
+@mixin tablets {
+    @media only screen and (min-width: 768px) {
+        @content;
+    }
+}
+
+@mixin tablets1024 {
+    @media only screen and (min-width: 1024px) {
+        @content
+    }
+}
+
+
+
 @font-face {
     font-family: 'Helvetica_New_Design_Bold';
     src: url('../fonts/HelveticaNowDisplay-Bold.ttf');
@@ -17,6 +37,31 @@ $colors: (description: #D4D4D4,
 
 @function color($basicColors) {
     @return map-get($map: $colors, $key:$basicColors)
+}
+
+$fonts-mobile: (social-menu: 12px,
+    icons: 30px,
+    menu-links: 25px,
+    name-surname: 41px,
+    small-header: 20px,
+    description: 15px,
+);
+
+$fonts-tablets: (social-menu: 0px,
+    name-surname: 0px,
+    small-header: 0px,
+    description: 0px,
+);
+
+$fonts-desktop: (social-menu: 0px,
+    icons: 60px,
+    name-surname: 0px,
+    small-header: 0px,
+    description: 0px,
+);
+
+@function font-size($basicSize) {
+    @return map-get($map: $font-size, $key:$basicSize)
 }
 
 * {
@@ -52,12 +97,10 @@ body {
         filter: blur(20px);
         z-index: -1;
     }
-
 }
 
 .social-square {
     background-color: color(menu-background);
-    position: fixed;
     top: 0;
     left: 0;
     height: 37px;
@@ -79,6 +122,38 @@ body {
             font-size: 12px;
             letter-spacing: 6.06px;
             text-indent: 7px;
+            // transition: transform 0.5s ease-in;
+
+        }
+
+        @include tablets {
+            p {
+                left: 60%;
+                width: 250px;
+                font-size: 18px;
+            }
+        }
+
+        @include tablets1024 {
+            p {
+                left: 60%;
+                width: 400px;
+                font-size: 25px;
+                letter-spacing: 14px;
+            }
+        }
+    }
+
+    @include tablets {
+        .social {
+            width: 250px;
+        }
+    }
+
+    @include tablets1024 {
+        .social {
+            width: 400px;
+            height: 60px;
         }
     }
 
@@ -96,17 +171,39 @@ body {
         justify-content: space-around;
         align-items: center;
         transition: transform 0.5s ease-in;
-
         transform: translateX(-100%);
-
 
         .icons a i {
             font-size: 30px;
             color: black;
             opacity: 0;
         }
+
+        @include tablets1024 {
+            .icons a i {
+                font-size: 60px;
+            }
+        }
     }
 
+    @include tablets1024 {
+        .social-icons {
+            top: 60px;
+        }
+    }
+}
+
+@include tablets {
+    .social-square {
+        width: 250px;
+    }
+}
+
+@include tablets1024 {
+    .social-square {
+        width: 400px;
+        height: 60px;
+    }
 }
 
 .social-active {
@@ -127,22 +224,15 @@ body {
 
 
 
-// .toggle .short-line {
-//     transform: rotate(-45deg) translate(-4px, 4px);
-// }
-
-// .toggle .middle-line {
-//     opacity: 0;
-// }
-
-// .toggle .long-line {
-//     transform: translate(25px, -8px) rotate(45deg) scaleX(0.336);
+// .toggle {
+//     p {
+//         letter-spacing: 0px !important;
+//     }
 // }
 
 
 .navigation-square {
     background-color: color(menu-background);
-    // position: fixed;
     top: 0;
     right: 0;
     height: 37px;
@@ -154,17 +244,24 @@ body {
         top: 50%;
         right: 20%;
         transform: translate(0%, -50%);
-        // background-color: yellowgreen;
 
         .short-line {
             position: relative;
             background-color: color(icons);
-            // transform: rotateZ(180deg);
             right: -50px;
             height: 2px;
             width: 25px;
             margin: 5px;
             transition: all 0.3s ease;
+        }
+
+        @include tablets1024 {
+            .short-line {
+                right: -150px;
+                height: 3px;
+                width: 75px;
+                margin: 7px;
+            }
         }
 
         .middle-line {
@@ -176,18 +273,38 @@ body {
             margin: 5px;
         }
 
-        .long-line {
-            // position: relative;
-            // right: -0px;
-            // transform: rotate(180deg);
+        @include tablets1024 {
+            .middle-line {
+                right: -75px;
+                height: 3px;
+                width: 150px;
+                margin: 7px;
+            }
+        }
 
+
+        .long-line {
             background-color: color(icons);
             height: 2px;
             width: 75px;
             margin: 5px;
             transition: all 0.3s ease;
-
         }
+
+        @include tablets1024 {
+            .long-line {
+                height: 3px;
+                width: 225px;
+                margin: 7px;
+            }
+        }
+    }
+}
+
+@include tablets1024 {
+    .navigation-square {
+        width: 400px;
+        height: 60px;
     }
 }
 
@@ -222,7 +339,25 @@ body {
                 list-style: none;
                 letter-spacing: 20px;
             }
+
+            @include tablets1024 {
+                a {
+                    font-size: 50px;
+                }
+            }
         }
+
+        @include tablets1024 {
+            li {
+                margin: 35px;
+            }
+        }
+    }
+}
+
+@include tablets1024 {
+    .navigation {
+        top: 60px;
     }
 }
 
@@ -247,6 +382,12 @@ body {
     transform: rotate(-45deg) translate(-4px, 4px);
 }
 
+@include tablets1024 {
+    .toggle .short-line {
+        transform: rotate(-45deg) translate(-4px, 15px) scaleX(0.8)
+    }
+}
+
 .toggle .middle-line {
     opacity: 0;
 }
@@ -255,7 +396,11 @@ body {
     transform: translate(25px, -8px) rotate(45deg) scaleX(0.336);
 }
 
-
+@include tablets1024 {
+    .toggle .long-line {
+        transform: translate(83px, -6px) rotate(45deg) scaleX(0.27);
+    }
+}
 
 nav,
 header,
@@ -282,6 +427,19 @@ footer {
             text-align: center;
             text-transform: uppercase;
         }
+
+        @include iPhone5 {
+            h1 {
+                font-size: 31px;
+            }
+        }
+
+        @include tablets1024 {
+            h1 {
+                font-size: 60px;
+                line-height: 100px;
+            }
+        }
     }
 
     .surname {
@@ -293,17 +451,35 @@ footer {
             text-align: center;
             text-transform: uppercase;
         }
+
+        @include iPhone5 {
+            h1 {
+                font-size: 31px;
+            }
+        }
+
+        @include tablets1024 {
+            h1 {
+                font-size: 60px;
+            }
+        }
     }
 
 
     h2 {
         padding-top: 60px;
         font-size: 20px;
-        line-height: 27px;
+        line-height: 120px;
         letter-spacing: 10.1px;
         text-align: center;
         text-transform: uppercase;
         font-family: 'Helvetica_New_Design_Regular', sans-serif;
+    }
+
+    @include tablets1024 {
+        h2 {
+            font-size: 35px;
+        }
     }
 
 }
@@ -313,4 +489,17 @@ footer {
     left: 50%;
     transform: translate(-50%, -10%);
     color: color(description);
+    font-size: 12px;
+}
+
+@include tablets {
+    footer {
+        font-size: 18px;
+    }
+}
+
+@include tablets1024 {
+    footer {
+        font-size: 28px;
+    }
 }
