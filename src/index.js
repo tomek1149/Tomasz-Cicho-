@@ -10,7 +10,6 @@ const navSlide = () => {
     burger.addEventListener('click', () => {
         nav.classList.toggle('navigation-active');
 
-
         navlinks.forEach((link, index) => {
             // console.log(index)
             if (link.style.animation) {
@@ -19,7 +18,6 @@ const navSlide = () => {
                 link.style.animation = `navFade 0.5s ease forwards ${index / 7 + 0.2}s`;
             }
 
-
         });
         // burger animation
 
@@ -27,7 +25,6 @@ const navSlide = () => {
 
     });
 }
-
 navSlide();
 
 const socialNav = () => {
@@ -52,5 +49,4 @@ const socialNav = () => {
 
     });
 }
-
 socialNav();
